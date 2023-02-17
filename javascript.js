@@ -1,46 +1,36 @@
-const getComputerChoice = function () {
-  let choices = ["rock", "paper", "scissors"]; //computer choices
-  let randomChoice = Math.floor(Math.random() * choices.length) + 1; //randomly generates a number
+const computerChoices = ["rock", "paper", "scissors"];
 
-  if (randomChoice === 1) {
-    return "Rock";
-  } else if (randomChoice === 2) {
-    return "Scissors";
-  } else if (randomChoice === 3) {
-    return "Paper";
+const computerPicks = function () {
+  // Randomize rock paper and scissors.
+  let randomizeChoice = Math.floor(Math.random() * computerChoices.length);
+  // randomizeChoice will be one of [0,1,2] representing all possible indices of computerChoices.
+  return computerChoices[randomizeChoice];
+};
+const playRound = function (playerPicks, computerPicks) {
+  if (computerPicks == playerPicks) {
+    return "Tie";
+  }
+  if (
+    (computerPicks == "paper" && playerPicks == "rock") ||
+    (computerPicks == "rock" && playerPicks == "scissors") ||
+    (computerPicks == "scissors" && playerPicks == "paper")
+  ) {
+    return "you lose";
+  }
+  if (
+    (computerPicks == "paper" && playerPicks == "scissors") ||
+    (computerPicks == "rock" && playerPicks == "paper") ||
+    (computerPicks == "scissors" && playerPicks == "rock")
+  ) {
+    return "you win";
   }
 };
 
-const playRound = function (playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    return "tie";
-  } else if (
-    (playerSelection === "rock") &
-    (computerSelection === "scissors")
-  ) {
-    return "winner";
-  } else if ((playerSelection === "rock") & (computerSelection === "paper")) {
-    return "winner";
-  } else if (
-    (playerSelection === "scissors") &
-    (computerSelection === "rock")
-  ) {
-    return "loser";
-  } else if (
-    (playerSelection === "scissors") &
-    (computerSelection === "paper")
-  ) {
-    return "winner";
-  } else if (
-    (playerSelection === "paper") &
-    (computerSelection === "scissors")
-  ) {
-    return "loser";
-  } else if ((playerSelection === "paper") & (computerSelection === "rock")) {
-    return "winner";
-  }
+let playerPicks = "rock";
+
+const game = function () {
+  for (let i = 0; i < 5; i++) {}
 };
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+const compChoice = computerPicks();
+console.log(playRound(playerPicks, compChoice));
