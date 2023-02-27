@@ -1,36 +1,35 @@
-const computerChoices = ["rock", "paper", "scissors"];
+const options = ["rock", "paper", "scissors"];
 
-const computerPicks = function () {
-  // Randomize rock paper and scissors.
-  let randomizeChoice = Math.floor(Math.random() * computerChoices.length);
-  // randomizeChoice will be one of [0,1,2] representing all possible indices of computerChoices.
-  return computerChoices[randomizeChoice];
-};
-const playRound = function (playerPicks, computerPicks) {
-  if (computerPicks == playerPicks) {
+function computerPicks() {
+  const choice = options[Math.floor(Math.random() * options.length)];
+  return choice;
+}
+function checkWinner(playerSelection, computerSelection) {
+  if (playerSelection == computerSelection) {
     return "Tie";
-  }
-  if (
-    (computerPicks == "paper" && playerPicks == "rock") ||
-    (computerPicks == "rock" && playerPicks == "scissors") ||
-    (computerPicks == "scissors" && playerPicks == "paper")
+  } else if (
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper")
   ) {
-    return "you lose";
+    return "Win";
+  } else {
+    return "lose";
   }
-  if (
-    (computerPicks == "paper" && playerPicks == "scissors") ||
-    (computerPicks == "rock" && playerPicks == "paper") ||
-    (computerPicks == "scissors" && playerPicks == "rock")
-  ) {
-    return "you win";
+}
+
+function play(playerSelection, computerSelection) {
+  const result = checkWinner(playerSelection, computerSelection);
+  if (result == "Tie") {
+    return "it was a tie";
   }
-};
-
-let playerPicks = "rock";
-
-const game = function () {
-  for (let i = 0; i < 5; i++) {}
-};
-
-const compChoice = computerPicks();
-console.log(playRound(playerPicks, compChoice));
+  if (result == "Win") {
+    return "you have won";
+  }
+  if (result == "lose") {
+    return "you suck";
+  }
+}
+let playerSelection = "rock";
+const computerSelection = computerPicks();
+console.log(play(playerSelection, computerSelection));
