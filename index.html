@@ -4,25 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <div>
       <h1>Rock Paper Scissors of DEATH</h1>
     </div>
+    SCORE BOARD
+    <div class="scoreBoard">
+      <div class="userLabel">User Score</div>
+      <div class="compLabel">Computer Score</div>
+      <span id="userScore">0</span>:<span id="compScore">0</span>
+    </div>
+
     <div>
       <h2>Pick Your Weapon</h2>
     </div>
     <div>
-      <button class="rock"><h4>Rock</h4></button>
+      <button class="choiceBtn" id="r">Rock</button>
     </div>
     <div>
-      <button class="paper"><h4>Paper</h4></button>
+      <button class="choiceBtn>" id="p">Paper</button>
     </div>
     <div>
-      <button class="scissor"><h4>Scissors</h4></button>
+      <button class="choiceBtn" id="s">Scissors</button>
     </div>
+    <div id="result">result</div>
     <script src="javascript.js"></script>
   </body>
 </html>

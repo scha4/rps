@@ -1,0 +1,19 @@
+body {
+  background: white;
+}
+
+.scoreBoard {
+  text-align: center;
+  border: 3px solid black;
+  position: relative;
+}
+.userLabel {
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+.compLabel {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
