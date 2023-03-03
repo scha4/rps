@@ -31,6 +31,7 @@ function computerPicks() {
 }
 
 function play(playerSelection) {
+  const computerSelection = computerPicks();
   if (playerSelection == computerSelection) {
     results.innerHTML = `Its a tie`;
   } else if (
