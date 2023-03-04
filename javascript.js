@@ -8,26 +8,39 @@ const rockDiv = document.getElementById("r");
 const paperDiv = document.getElementById("p");
 const scissorsDiv = document.getElementById("s");
 const results = document.getElementById("result");
+const choice123 = document.querySelectorAll(".choices");
+const resetBtn = document.querySelector(".resetBtn");
 
 //UI
 
 rockDiv.addEventListener("click", function () {
-  play("rock");
+  play("Rock");
 });
 paperDiv.addEventListener("click", function () {
-  play("paper");
+  play("Paper");
 });
 scissorsDiv.addEventListener("click", function () {
-  play("scissors");
+  play("Scissors");
 });
 
+resetBtn.onclick = reloadPage;
+function reloadPage() {
+  window.location.reload();
+}
+
 // How the game functions
-const options = ["rock", "paper", "scissors"];
+const options = ["Rock", "Paper", "Scissors"];
 const computerSelection = computerPicks();
 
 function computerPicks() {
   const choice = options[Math.floor(Math.random() * options.length)];
   return choice;
+}
+//disable function
+function disable() {
+  choice123.forEach((elem) => {
+    elem.disabled = true;
+  });
 }
 
 function play(playerSelection) {
@@ -35,30 +48,26 @@ function play(playerSelection) {
   if (playerSelection == computerSelection) {
     results.innerHTML = `Its a tie`;
   } else if (
-    (playerSelection == "rock" && computerSelection == "scissors") ||
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "scissors" && computerSelection == "paper")
+    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+    (playerSelection == "Paper" && computerSelection == "Rock") ||
+    (playerSelection == "Scissors" && computerSelection == "Paper")
   ) {
     userScore++;
     userScoreSpan.innerHTML = userScore;
     results.innerHTML = `${playerSelection} beats ${computerSelection}`;
+    if (userScore == 5) {
+      results.innerHTML = `You win the game!`;
+      disable();
+      document.getElementById("p").setAttribute("disabled", "disabled");
+    }
   } else {
     compScore++;
     compScoreSpan.innerHTML = compScore;
     results.innerHTML = `${computerSelection} beats ${playerSelection}`;
+    if (compScore == 5) {
+      results.innerHTML = `You lose bitch!`;
+      disable();
+      document.getElementById("p").setAttribute("disabled", "disabled");
+    }
   }
 }
-
-// function play(playerSelection, computerSelection) {
-//   const result = checkWinner(playerSelection, computerSelection);
-
-//   if (result == "Tie") {
-//     return "it was a tie";
-//   }
-//   if (result == "Win") {
-//     return "you have won";
-//   }
-//   if (result == "Lose") {
-//     return "you suck";
-//   }
-// }
