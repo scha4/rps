@@ -1,5 +1,7 @@
 # rps
 
+-----> link to project https://scha4.github.io/rps/
+
 rock paper scissor game
 
 Have 3 choice
